@@ -10,9 +10,8 @@ export default function Home({ isConnected }) {
       </Head>
 
       <main>
-
         {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
+          <h2 className="subtitle">Next Application using MongoDB and Shopif Storefront API</h2>
         ) : (
           <h2 className="subtitle">
             You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
@@ -20,21 +19,15 @@ export default function Home({ isConnected }) {
           </h2>
         )}
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
-
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
-
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className="card"

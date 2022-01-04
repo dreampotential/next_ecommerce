@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -10,6 +11,20 @@ const userModel = require("./model/user");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.set("view engine", "ejs");
+
+var multer = require('multer');
+ 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+ 
+var upload = multer({ storage: storage });
 
 app.post('/signup', (req, res) => {
     userModel.findOne({email:req.body.email}, (err, user) =>{

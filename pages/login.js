@@ -18,6 +18,7 @@ export default function Form() {
       email: email,
       password: md5(password)
     }
+    console.log(postData)
     axios
       .post("http://localhost:4000/login", postData)
       .then((res) => {

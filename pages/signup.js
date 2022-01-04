@@ -25,7 +25,7 @@ export default function Form() {
       password: md5(password)
     }
     axios
-      .post("http://localhost:4000/signup", postData)
+      .post("/api/register", postData)
       .then((res) => {
         console.log(res)
       }) 

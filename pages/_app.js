@@ -23,6 +23,12 @@ const Navbar = () => {
               <Menu.Item position = "right">
                 <Button inverted color='pink' style = {{marginRight:50}}><Link href = "/signup">Signup</Link></Button>
                 <Button inverted color='green'><Link href = "/login">Login</Link></Button>
+                <Menu.Item position = "right">
+                <Button onClick = {() => {
+                  const storage = window.localStorage
+                  const cart = JSON.parse(storage.getItem('Cart'));
+                  Router.replace(cart.webUrl)}}>Checkout</Button>
+                </Menu.Item>
               </Menu.Item>
             </Container>
           </Menu>

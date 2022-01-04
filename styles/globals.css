@@ -17,3 +17,11 @@ a {
 * {
   box-sizing: border-box;
 }
+.actions {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+button.ui.red.inverted.button, button.ui.blue.inverted.button {
+  width: 50%;
+}

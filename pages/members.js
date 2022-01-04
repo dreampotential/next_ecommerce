@@ -2,17 +2,24 @@ import { connectToDatabase } from "../util/mongodb";
 import Link from 'next/link'
 import { Button, Card, Grid } from 'semantic-ui-react'
 
-export default function Movies({ movies }) {
+export default function members({ members }) {
+    const remove = async event => {
+        console.log(event);
+    }
     return (
         <>
+        <h1 className = "my-10 text-center">Our Customers</h1>
             <Grid centered>
             <Card.Group itemsPerRow = {2}>
-                {movies.map((movie, index) => (
+                {members.map((member, index) => (
                     <Card key={index}>
-                        <Link href = {`/users/${movie.name}`} >
-                            <Button>{movie.name}</Button>                      
+                        <Link href = {`/users/${member.name}`} >
+                            <Button>{member.name}</Button>                      
                         </Link>
-                        <Button inverted color='red'><Link href = {`/removeuser/${movie.name}`}>Remove</Link></Button>
+                        <div className = "actions">
+                            <Button inverted color='red'><a href = {`/removeuser/${member.name}`}>Remove</a></Button>
+                            <Button inverted color='blue'><a href = {`/edit/${member.name}`}>Edit</a></Button>
+                        </div>
                     </Card>
                     
                 ))}
@@ -25,7 +32,7 @@ export default function Movies({ movies }) {
 export async function getServerSideProps() {
     const { db } = await connectToDatabase();
 
-    const movies = await db
+    const members = await db
         .collection("userlists")
         .find({})
         .sort({ metacritic: -1 })
@@ -34,7 +41,7 @@ export async function getServerSideProps() {
 
     return {
         props: {
-            movies: JSON.parse(JSON.stringify(movies)),
+            members: JSON.parse(JSON.stringify(members)),
         },
     };
 }
